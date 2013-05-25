@@ -16,7 +16,7 @@
       f = function(acc, k) {
         return ary[k].length + acc;
       };
-      return _(Object.keys(ary)).reduce(acc, 0);
+      return _(Object.keys(ary)).reduce(f, 0);
     };
     self.put = put = function(k, v) {
       var bucket, buckets, h, _ref;
