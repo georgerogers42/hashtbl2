@@ -29,9 +29,8 @@ exports.HashTbl = Htbl = (hf) ->
     return
   self.map = map = (f) ->
     ps = []
-    for own k of ary
-      for bucket in ary[k]
-        ps.push f(bucket[0], bucket[1])
+    forEach (k, v) ->
+      ps.push f(k, v)
     return ps
   self.pairs = pairs = () -> map (p...) -> p
   self.keys = () -> map (k) -> k
