@@ -24,7 +24,7 @@ exports.HashTbl = Htbl = (hf) ->
     p[1] if p?
   return
 
-exports.hashFunctor = hf =
+exports.hasher = hf =
   hash: (k) ->
     return k if _.isString(k) or (_.isNumber(k) and not _.isNaN(k)) or _.isBoolean(k)
     if _.isArray k

@@ -50,7 +50,7 @@
     };
   };
 
-  exports.hashFunctor = hf = {
+  exports.hasher = hf = {
     hash: function(k) {
       var a, i, v, _i, _len;
 
