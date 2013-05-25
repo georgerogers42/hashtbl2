@@ -57,7 +57,9 @@
       if (_.isString(k) || (_.isNumber(k) && !_.isNaN(k)) || _.isBoolean(k)) {
         return k;
       }
-      if (_.isArray(k)) {
+      if (typeof k.hashCode === "function") {
+        return k.hashCode();
+      } else if (_.isArray(k)) {
         a = "";
         for (v = _i = 0, _len = k.length; _i < _len; v = ++_i) {
           i = k[v];
