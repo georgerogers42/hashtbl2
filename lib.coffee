@@ -27,7 +27,9 @@ exports.HashTbl = Htbl = (hf) ->
 exports.hasher = hf =
   hash: (k) ->
     return k if _.isString(k) or (_.isNumber(k) and not _.isNaN(k)) or _.isBoolean(k)
-    if _.isArray k
+    if typeof k.hashCode is "function"
+      k.hashCode()
+    else if _.isArray k
       a = ""
       for i, v in k
         a += hf.hash(i)
