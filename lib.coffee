@@ -7,7 +7,7 @@ exports.HashTbl = Htbl = (hf) ->
   self.size = () ->
     f = (acc, k) ->
       ary[k].length + acc
-    _(Object.keys(ary)).reduce(acc, 0)
+    _(Object.keys(ary)).reduce(f, 0)
   self.put = put = (k, v) ->
     h = hf.hash(k)
     buckets = ary[h] ?= []
