@@ -27,16 +27,14 @@ exports.HashTbl = Htbl = (hf) ->
       for bucket in ary[k]
         f(bucket[0], bucket[1])
     return
-  self.pairs = pairs = () ->
+  self.map = map = (f) ->
     ps = []
-    forEach (k, v) ->
-      ps.push([k, v])
+    for own k of ary
+      for bucket in ary[k]
+        ps.push f(bucket[0], bucket[1])
     return ps
-  self.keys = () ->
-    ps = []
-    forEach (k) ->
-      ps.push k
-    return ps
+  self.pairs = pairs = () -> map (p...) -> p
+  self.keys = () -> map (k) -> k
   return
 
 exports.hasher = hf =
