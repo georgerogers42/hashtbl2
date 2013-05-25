@@ -6,7 +6,7 @@
   _ = require("underscore");
 
   exports.HashTbl = Htbl = function(hf) {
-    var ary, getPair, put, self;
+    var ary, forEach, getPair, pairs, put, self;
 
     ary = {};
     self = this;
@@ -48,19 +48,35 @@
         return p[1];
       }
     };
-    self.pairs = function() {
-      var bucket, k, pairs, _i, _len, _ref;
+    self.forEach = forEach = function(f) {
+      var bucket, k, _i, _len, _ref;
 
-      pairs = [];
       for (k in ary) {
         if (!__hasProp.call(ary, k)) continue;
         _ref = ary[k];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           bucket = _ref[_i];
-          pairs.push([bucket[0], bucket[1]]);
+          f(bucket[0], bucket[1]);
         }
       }
-      return pairs;
+    };
+    self.pairs = pairs = function() {
+      var ps;
+
+      ps = [];
+      forEach(function(k, v) {
+        return ps.push([k, v]);
+      });
+      return ps;
+    };
+    self.keys = function() {
+      var ps;
+
+      ps = [];
+      forEach(function(k) {
+        return ps.push(k);
+      });
+      return ps;
     };
   };
 

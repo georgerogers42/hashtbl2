@@ -22,12 +22,21 @@ exports.HashTbl = Htbl = (hf) ->
   self.get = (k) ->
     p = getPair(k)
     p[1] if p?
-  self.pairs = () ->
-    pairs = []
+  self.forEach = forEach = (f) ->
     for own k of ary
       for bucket in ary[k]
-        pairs.push [bucket[0], bucket[1]]
-    return pairs
+        f(bucket[0], bucket[1])
+    return
+  self.pairs = pairs = () ->
+    ps = []
+    forEach (k, v) ->
+      ps.push([k, v])
+    return ps
+  self.keys = () ->
+    ps = []
+    forEach (k) ->
+      ps.push k
+    return ps
   return
 
 exports.hasher = hf =
