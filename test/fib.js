@@ -69,7 +69,7 @@
     return it("#keys", function() {
       var _i, _results;
 
-      return expect(_.chain(h.keys()).pluck(0).sort().value()).to.be.eql((function() {
+      return expect(_(h.keys()).pluck(0).sort()).to.be.eql((function() {
         _results = [];
         for (_i = 1; _i <= 40; _i++){ _results.push(_i); }
         return _results;

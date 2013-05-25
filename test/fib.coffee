@@ -39,5 +39,4 @@ describe "memo fib", () ->
   it "pairs", () ->
     expect(h.pairs().length).to.be(40)
   it "#keys", () ->
-    expect(_.chain(h.keys()).pluck(0).sort().value())
-      .to.be.eql([1..40].sort())
+    expect(_(h.keys()).pluck(0).sort()).to.be.eql([1..40].sort())
