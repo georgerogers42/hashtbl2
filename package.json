@@ -1,6 +1,6 @@
 {
   "name": "hashtbl2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A hashtable library",
   "main": "lib.js",
   "dependencies": {
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": "https://github.com/georgerogers42/hashtbl2.git",
   "author": "George Rogers",
   "license": "BSD"
 }
