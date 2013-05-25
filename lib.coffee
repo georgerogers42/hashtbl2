@@ -6,7 +6,7 @@ exports.HashTbl = Htbl = (hf) ->
   self = this
   self.size = () ->
     f = (acc, k) ->
-      ary[k].length + acc
+      acc + ary[k].length
     _(Object.keys(ary)).reduce(f, 0)
   self.put = put = (k, v) ->
     h = hf.hash(k)
@@ -22,6 +22,12 @@ exports.HashTbl = Htbl = (hf) ->
   self.get = (k) ->
     p = getPair(k)
     p[1] if p?
+  self.pairs = () ->
+    pairs = []
+    for own k of ary
+      for bucket in ary[k]
+        pairs.push [bucket[0], bucket[1]]
+    return pairs
   return
 
 exports.hasher = hf =

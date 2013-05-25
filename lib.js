@@ -14,7 +14,7 @@
       var f;
 
       f = function(acc, k) {
-        return ary[k].length + acc;
+        return acc + ary[k].length;
       };
       return _(Object.keys(ary)).reduce(f, 0);
     };
@@ -47,6 +47,20 @@
       if (p != null) {
         return p[1];
       }
+    };
+    self.pairs = function() {
+      var bucket, k, pairs, _i, _len, _ref;
+
+      pairs = [];
+      for (k in ary) {
+        if (!__hasProp.call(ary, k)) continue;
+        _ref = ary[k];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          bucket = _ref[_i];
+          pairs.push([bucket[0], bucket[1]]);
+        }
+      }
+      return pairs;
     };
   };
 
